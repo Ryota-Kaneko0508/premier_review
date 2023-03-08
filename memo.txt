@@ -1,0 +1,21 @@
+CREATE TABLE user (
+    id integer primary key auotoincrement,
+    username text not null unique,
+    password text not null,
+)
+
+CREATE TABLE review (
+    id integer primary key autoincrement,
+    user_id integer not null,
+    match text not null,
+    review text not null,
+    FOREIGN KEY(user_id) REFERENCES user(id),
+)
+
+CREATE TABLE like (
+    id integer primary key auotoincrement,
+    user_id integer not null,
+    review_id integer not null,
+    FOREIGN KEY(user_id) REFERENCES user(id),
+    FOREIGN KEY(review_id) REFERENCES review(id),
+)
