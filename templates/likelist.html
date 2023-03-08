@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-sm mt-5">
+    <h2>いいね一覧</h2>
+    <a href="/" role="button" class="btn btn-primary btn-md mt-2 mb-5">トップへ</a>
+    <div class="row ">
+        {% for like in likes %}
+        <div class="card col-sm-3 me-5 mb-5" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">試合: {{ like.match }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">ユーザー名: {{ like.username }}</h6>
+                <h6>レビュー</h6>
+                <p class="card-text">{{ like.review }}</p>
+                {% if not like.id in like_ReviewIds %}
+                <a href="/likelist/{{like.id}}/like" role="button" class="btn btn-ms mt-5" style="background-color: pink;">いいね</a>
+                {% else %}
+                <a href="/likelist/{{like.id}}/like-release" role="button" class="btn btn-ms mt-5" style="border-color: pink; border-width: 2px;">いいね解除</a>
+                {% endif %}               
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% endblock %}

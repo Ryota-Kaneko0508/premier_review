@@ -76,6 +76,8 @@ def login():
                 ).fetchone()
                 
                 session["user_id"] = user_id[0]
+                session["user_name"] = username
+
                 user = User(username)
                 login_user(user)
                 return redirect("/")
@@ -87,10 +89,40 @@ def login():
 @app.route("/", methods=['GET', 'POST'])
 @login_required
 def index():
-    reviews = get_db().execute("SELECT match, review FROM review").fetchall()
-    return render_template('index.html', reviews=reviews)
+
+    reviews = get_db().execute("SELECT * FROM review").fetchall()
+    rows = get_db().execute("SELECT review_id FROM like WHERE user_id=?", [session['user_id'], ])
+    like_ReviewIds = []
+
+    for row in rows:
+        if not row['review_id'] in like_ReviewIds:
+            like_ReviewIds.append(row['review_id'])
+
+    return render_template('index.html', reviews=reviews, like_ReviewIds=like_ReviewIds)
+
+@app.route("/likelist", methods=['GET', 'POST'])
+@login_required
+def likelist():
+
+    review_ids = get_db().execute("SELECT review_id FROM like WHERE user_id = ?", [session["user_id"], ]).fetchall()
+
+    likes = []
+
+    for review_id in review_ids:
+        likes.append(get_db().execute("SELECT * FROM review WHERE id = ?", [review_id["review_id"], ]).fetchone())
+
+    rows = get_db().execute("SELECT review_id FROM like WHERE user_id=?", [session['user_id'], ])
+    like_ReviewIds = []
+
+    for row in rows:
+        if not row['review_id'] in like_ReviewIds:
+            like_ReviewIds.append(row['review_id'])
+
+    
+    return render_template('likelist.html', likes=likes, like_ReviewIds=like_ReviewIds)
 
 @app.route("/post", methods={"GET", "POST"})
+@login_required
 def post():
     if request.method == 'POST':
         match = request.form.get('match')
@@ -103,12 +135,51 @@ def post():
         if not review:
             return redirect("/post")
         
-        get_db().execute("INSERT INTO review (match, review) VALUES(?,?)",[match,review])
+        get_db().execute("INSERT INTO review (user_id, username, match, review) VALUES(?,?,?,?)",[session["user_id"], session["user_name"], match,review,])
         get_db().commit()
 
         return redirect("/")
     
     return render_template('post.html')
+
+@app.route("/<id>/like", methods={"GET", "POST"})
+@login_required
+def like(id):
+    get_db().execute("INSERT INTO like (user_id, review_id) VALUES(?,?)",[session["user_id"], id,])
+
+    get_db().commit()
+
+    return redirect("/")
+
+@app.route("/likelist/<id>/like", methods={"GET", "POST"})
+@login_required
+def likelist_like(id):
+    get_db().execute("INSERT INTO like (user_id, review_id) VALUES(?,?)",[session["user_id"], id,])
+
+    get_db().commit()
+
+    return redirect("/likelist")
+
+@app.route("/<id>/like-release", methods={"GET", "POST"})
+@login_required
+def like_release(id):
+    get_db().execute("DELETE FROM like WHERE user_id=? AND review_id=?",[session["user_id"], id,])
+
+    get_db().commit()
+
+    return redirect("/")
+
+@app.route("/likelist/<id>/like-release", methods={"GET", "POST"})
+@login_required
+def likelist_LikeRelease(id):
+    get_db().execute("DELETE FROM like WHERE user_id=? AND review_id=?",[session["user_id"], id,])
+
+    get_db().commit()
+
+    return redirect("/likelist")
+   
+
+
 # database
 def connect_db():
     rv = sqlite3.connect(DATABASE)

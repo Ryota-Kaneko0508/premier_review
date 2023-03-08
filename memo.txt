@@ -7,15 +7,16 @@ CREATE TABLE user (
 CREATE TABLE review (
     id integer primary key autoincrement,
     user_id integer not null,
+    username text not null,
     match text not null,
     review text not null,
-    FOREIGN KEY(user_id) REFERENCES user(id),
-)
+    FOREIGN KEY(user_id) REFERENCES user(id)
+);
 
 CREATE TABLE like (
-    id integer primary key auotoincrement,
+    id integer primary key autoincrement,
     user_id integer not null,
     review_id integer not null,
     FOREIGN KEY(user_id) REFERENCES user(id),
-    FOREIGN KEY(review_id) REFERENCES review(id),
-)
+    FOREIGN KEY(review_id) REFERENCES review(id)
+);
