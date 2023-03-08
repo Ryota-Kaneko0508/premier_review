@@ -9,7 +9,13 @@
                 <th>レビュー</th>
             </tr>
         </thead>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.match }}</td>
+            <td>{{ review.review }}</td>
+        </tr>
+        {% endfor %}
     </table>
-    <button type="button" class="btn btn-primary btn-md mt-5">投稿画面</button>
+    <a href="/post" role="button" class="btn btn-primary btn-md mt-5">投稿画面</a>
 </div>
 {% endblock %}

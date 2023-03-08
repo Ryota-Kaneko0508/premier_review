@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-sm">
+    <a href="/" role="button" class="btn btn-primary btn-md mt-5">ホームへ</a>
+    <form method="POST">
+        <div class="mb-3 mt-2">
+            <label for="match" class="form-label">試合</label>
+            <input type="text" class="form-control" id="match" name="match" placeholder="(例)アーセナルvsチェルシー">
+        </div>
+        <div class="mb-3">
+            <label for="review" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="review" rows="10" name="review"></textarea>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary mb-3">投稿</button>
+        </div>  
+    </form>
+</div>
+{% endblock %}
