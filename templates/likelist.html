@@ -13,9 +13,9 @@
                 <h6>レビュー</h6>
                 <p class="card-text">{{ like.review }}</p>
                 {% if not like.id in like_ReviewIds %}
-                <a href="/likelist/{{like.id}}/like" role="button" class="btn btn-ms mt-5" style="border-color: pink; border-width: 2px;">いいね解除</a>
+                <a href="/likelist/{{like.id}}/like" role="button" class="btn btn-ms mt-5" style="border-color: pink; border-width: 2px;">いいね</a>
                 {% else %}
-                <a href="/likelist/{{like.id}}/like-release" role="button" class="btn btn-ms mt-5" style="background-color: pink;">いいね</a>
+                <a href="/likelist/{{like.id}}/like-release" role="button" class="btn btn-ms mt-5" style="background-color: pink;">いいね解除</a>
                 {% endif %}               
             </div>
         </div>
