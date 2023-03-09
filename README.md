@@ -1,4 +1,6 @@
 # Premier League Review
 #### Video Demo: https://youtu.be/RTaHAbHLV7E
-## Description:
-TODO
+## Description
+### purpose
+### URL Patterns
+### Application Overview
