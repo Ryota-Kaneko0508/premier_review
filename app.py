@@ -178,8 +178,7 @@ def likelist_LikeRelease(id):
 
     return redirect("/likelist")
    
-
-
+   
 # database
 def connect_db():
     rv = sqlite3.connect(DATABASE)
