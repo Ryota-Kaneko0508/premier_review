@@ -40,4 +40,8 @@ Like List page (/likelist)
 #### Design
 The front part of the application is implemented with HTML, CSS and Bootstrap.
 #### Header
-Before logging in, login and signup are shown. If you click on the login section, you will be redirected to the login page, and if you click on the signup section, you will be redirected to the signup page.
+Before logging in, login and signup are shown. If you click on the login section, you will be redirected to the login page, and if you click on the signup section, you will be redirected to the signup page.After logging in, you will see top, post, like list and logout. If you click on the "like list," you will be redirected to the like list page, and if you click on "post," you will be redirected to the post page. Click "logout" to log out.
+#### Top page
+The top page is not displayed unless you log in. On the top page, you can see your match reviews and other users' reviews. When you click on the "Submit" button, you will be redirected to the "Submit" page.When you click on the Like button, you can like the page. After clicking the Like button, the button changes to show "Unlike". When you click on the "Unlike" button, the Like is cancelled.
+#### Post page
+If you click on the button "Home", you will be returned to the top page.
