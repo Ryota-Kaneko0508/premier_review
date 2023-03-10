@@ -47,3 +47,7 @@ The top page is not displayed unless you log in. On the top page, you can see yo
 If you click on the button "Home", you will be returned to the top page.Enter the match in the text box labeled Match. Write a match review in the text area labeled Review. Click the "Submit" button to post the review and go to the top page.
 #### Like list page
 You will see reviews that you have liked.When you click on the "Unlike" button, the Like is canceled.
+#### signup page
+Users can register by registering a username and password.
+#### login page
+By entering and submitting your registered username and password, you can log in and jump to the top page.
