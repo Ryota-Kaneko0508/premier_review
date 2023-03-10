@@ -7,6 +7,29 @@ My hobby is watching the Premier League.The Premier League is a league of Englis
 An application that allows you to review Premier League matches.
 ### Technology
 Python, flask, HTML, CSS, bootstrap, SQlite
+### DataBase
+CREATE TABLE user (
+    id integer primary key autoincrement,
+    username text not null unique,
+    password text not null,
+)
+
+CREATE TABLE review (
+    id integer primary key autoincrement,
+    user_id integer not null,
+    username text not null,
+    match text not null,
+    review text not null,
+    FOREIGN KEY(user_id) REFERENCES user(id)
+);
+
+CREATE TABLE like (
+    id integer primary key autoincrement,
+    user_id integer not null,
+    review_id integer not null,
+    FOREIGN KEY(user_id) REFERENCES user(id),
+    FOREIGN KEY(review_id) REFERENCES review(id)
+);
 ### URL Patterns
 
 ### Application Overview
