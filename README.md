@@ -37,4 +37,7 @@ top page (/),
 post page (/post),
 Like List page (/likelist)
 ### Application Overview
-#### Before logging in
+#### Design
+The front part of the application is implemented with HTML, CSS and Bootstrap.
+#### Header
+Before logging in, login and signup are shown. If you click on the login section, you will be redirected to the login page, and if you click on the signup section, you will be redirected to the signup page.
