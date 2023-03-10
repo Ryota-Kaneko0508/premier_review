@@ -44,4 +44,6 @@ Before logging in, login and signup are shown. If you click on the login section
 #### Top page
 The top page is not displayed unless you log in. On the top page, you can see your match reviews and other users' reviews. When you click on the "Submit" button, you will be redirected to the "Submit" page.When you click on the Like button, you can like the page. After clicking the Like button, the button changes to show "Unlike". When you click on the "Unlike" button, the Like is cancelled.
 #### Post page
-If you click on the button "Home", you will be returned to the top page.
+If you click on the button "Home", you will be returned to the top page.Enter the match in the text box labeled Match. Write a match review in the text area labeled Review. Click the "Submit" button to post the review and go to the top page.
+#### Like list page
+You will see reviews that you have liked.When you click on the "Unlike" button, the Like is canceled.
