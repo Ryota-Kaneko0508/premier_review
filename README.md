@@ -9,10 +9,10 @@ An application that allows you to review Premier League matches.
 Python, flask, HTML, CSS, bootstrap, SQlite
 ### DataBase
 CREATE TABLE user (
-    id integer primary key autoincrement,
-    username text not null unique,
-    password text not null,
-)
+    id integer primary key autoincrement,　　
+    username text not null unique,　　
+    password text not null,　　
+)　　
 
 CREATE TABLE review (
     id integer primary key autoincrement,
