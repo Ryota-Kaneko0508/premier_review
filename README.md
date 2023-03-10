@@ -31,9 +31,10 @@ CREATE TABLE like (
     FOREIGN KEY(review_id) REFERENCES review(id)
 );
 ### URL Patterns
-login page (/login)
-signup page (/signup)
-top page (/)
-post page (/post)
+login page (/login),
+signup page (/signup),
+top page (/),
+post page (/post),
 Like List page (/likelist)
 ### Application Overview
+#### Before logging in
